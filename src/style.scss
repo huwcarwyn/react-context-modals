@@ -1,0 +1,60 @@
+.srm-modal-open {
+  position: relative;
+  overflow: hidden;
+}
+
+.srm-modal-backdrop {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  position: fixed;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.srm-modal-wrapper {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: auto;
+  position: fixed;
+  align-items: center;
+}
+
+.srm-modal-content {
+  margin: auto;
+  height: 100vh;
+  overflow: auto;
+  position: relative;
+  background: white;
+  -webkit-font-smoothing: subpixel-antialiased;
+
+  @media (min-width: 500px) {
+    height: auto;
+    padding: 50px;
+    overflow: none;
+  }
+}
+
+.srm-close-icon {
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  color: gray;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 20px;
+  position: absolute;
+
+  &:hover {
+    color: red;
+  }
+}
