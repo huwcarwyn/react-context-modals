@@ -5,7 +5,7 @@ React Context Modals allows you to very easily add accessible and flexible modal
 ### Installation
 
 ```
-npm install --save simple-react-modals
+npm install --save react-context-modals
 ```
 
 or
