@@ -11,7 +11,7 @@ npm install --save react-context-modals
 or
 
 ```
-yarn add simple-react-modals
+yarn add react-context-modals
 ```
 
 ### Setup
@@ -19,7 +19,7 @@ yarn add simple-react-modals
 To set up the library - all you need to do is wrap your app in the context provider, like so:
 
 ```
-import { ModalProvider } from 'simple-react-modals'
+import { ModalProvider } from 'react-context-modals'
 
 export const App = () => {
     return (
@@ -35,7 +35,7 @@ export const App = () => {
 With hooks:
 
 ```
-import { useModal } from 'simple-react-modals'
+import { useModal } from 'react-context-modals'
 
 const BasicModal = ({ message }) => (
     <div>this is a very basic modal, with a message passed via props: {message}</div>
@@ -58,7 +58,7 @@ With class based components:
 
 ```
 import React, { Component } from 'react'
-import { ModalConsumer } from 'simple-react-modals'
+import { ModalConsumer } from 'react-context-modals'
 
 const BasicModal = () => <div>this is a very basic modal</div>
 
