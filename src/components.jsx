@@ -27,9 +27,7 @@ const ModalBackdrop = ({ children, onClick }) => (
 )
 
 const ModalWrapper = ({ children }) => (
-  <div className={className} className="srm-modal-wrapper">
-    {children}
-  </div>
+  <div className="srm-modal-wrapper">{children}</div>
 )
 
 const ModalContent = ({ children }) => (

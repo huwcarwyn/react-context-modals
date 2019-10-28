@@ -42,7 +42,7 @@ const BasicModal = ({ message }) => (
 )
 
 const Example = props => {
-    const { showModal } = useModal()
+    const { showModal, hideModal } = useModal()
 
     return (
         <button onClick={() => showModal(BasicModal, {
@@ -66,7 +66,7 @@ class Example extends Component {
     render() {
         return (
             <ModalConsumer>
-                {({ showModal }) => (
+                {({ showModal, hideModal }) => (
                     <button onClick={() => showModal(BasicModal)}>Open modal</button>
                 )}
             </ModalConsumer>

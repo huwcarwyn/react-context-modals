@@ -1,6 +1,6 @@
 {
   "name": "react-context-modals",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "Add modals to your React app via the context API",
   "main": "dist/main.js",
   "scripts": {
@@ -9,7 +9,8 @@
     "dev": "cross-env NODE_ENV=development node_modules/.bin/webpack",
     "build": "cross-env NODE_ENV=production node_modules/.bin/webpack",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "react",
@@ -27,6 +28,7 @@
     "@storybook/addon-links": "^5.2.5",
     "@storybook/addons": "^5.2.5",
     "@storybook/react": "^5.2.5",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^3.2.0",
     "core-js": "^3.2.1",
@@ -39,11 +41,15 @@
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.40.2",
-    "webpack-cli": "^3.3.9"
+    "webpack-cli": "^3.3.9",
+    "semantic-release": "^15.13.28"
   },
   "peerDependencies": {
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
-  "dependencies": {}
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huwcarwyn/simple-react-modals.git"
+  }
 }

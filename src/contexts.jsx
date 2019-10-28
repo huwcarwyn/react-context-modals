@@ -50,6 +50,12 @@ const ModalProvider = ({ children }) => {
     }
   }
 
+  useEffect(() => {
+    state.component === null
+      ? document.addEventListener('keydown', onKeyDown)
+      : document.removeEventListener('keydown', onKeyDown)
+  }, [state.component])
+
   return (
     <div className="simple-react-modals" onKeyDown={onKeyDown}>
       <Provider value={state}>

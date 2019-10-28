@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useModal, ModalProvider } from 'src'
+import { useModal, ModalProvider } from '../src'
 
 export default {
   title: 'Modal'
