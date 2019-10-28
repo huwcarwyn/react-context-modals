@@ -36,14 +36,6 @@ const ModalProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(reducer, modalState)
 
-  useEffect(() => {
-    document.body.classList.add('srm-modal-open')
-
-    return () => {
-      document.body.classList.remove('srm-modal-open')
-    }
-  }, [state.component])
-
   const onKeyDown = e => {
     if (e.key === 'Escape') {
       hideModal()

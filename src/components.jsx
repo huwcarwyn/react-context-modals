@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { useModal } from 'contexts'
 
 import './style.scss'
+import ModalStories from '../stories/Modal.stories'
 
 const CrossIcon = props => (
   <svg
@@ -20,18 +21,28 @@ const CrossIcon = props => (
   </svg>
 )
 
-const ModalBackdrop = ({ children, onClick }) => (
-  <div onClick={onClick} className="srm-modal-backdrop">
-    {children}
-  </div>
-)
+const ModalBackdrop = ({ children, onClick }) => {
+  useEffect(() => {
+    document.body.classList.add('srm-modal-open')
+
+    return () => {
+      document.body.classList.remove('srm-modal-open')
+    }
+  }, [])
+
+  return (
+    <div onClick={onClick} className="srm-modal-backdrop">
+      {children}
+    </div>
+  )
+}
 
 const ModalWrapper = ({ children }) => (
   <div className="srm-modal-wrapper">{children}</div>
 )
 
-const ModalContent = ({ children }) => (
-  <div className="srm-modal-content">{children}</div>
+const ModalContent = ({ children, className = '' }) => (
+  <div className={`srm-modal-content ${className}`}>{children}</div>
 )
 
 export const ModalRoot = () => {
@@ -40,7 +51,7 @@ export const ModalRoot = () => {
   return Component ? (
     <ModalWrapper>
       <ModalBackdrop onClick={hideModal} />
-      <ModalContent>
+      <ModalContent className={modalProps.className}>
         <CrossIcon onClick={hideModal} className="srm-close-icon" />
         <Component {...modalProps} />
       </ModalContent>
