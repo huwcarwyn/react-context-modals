@@ -46,14 +46,18 @@ const ModalContent = ({ children, className = '' }) => (
 )
 
 export const ModalRoot = () => {
-  const { component: Component, modalProps, hideModal } = useModal()
+  const { component: Component, modalProps, hideModal, showModal } = useModal()
 
   return Component ? (
     <ModalWrapper>
       <ModalBackdrop onClick={hideModal} />
       <ModalContent className={modalProps.className}>
         <CrossIcon onClick={hideModal} className="srm-close-icon" />
-        <Component {...modalProps} />
+        <Component
+          {...modalProps}
+          hideModal={hideModal}
+          showModal={showModal}
+        />
       </ModalContent>
     </ModalWrapper>
   ) : null
