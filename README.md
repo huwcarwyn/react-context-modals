@@ -1,6 +1,6 @@
-# Simple React Modals
+# React Context Modals
 
-Simple React Modals allows you to very easily add accessible and flexible modals to any project, any component can be turned into a modal.
+React Context Modals allows you to very easily add accessible and flexible modals to any project, any component can be turned into a modal. Can be used either via the context API or by using the hook.
 
 ### Installation
 
