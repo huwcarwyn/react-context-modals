@@ -1,0 +1,7 @@
+/.storybook
+/src
+/stories
+.babelrc
+.prettierrc
+webpack.config.js
+*.md
