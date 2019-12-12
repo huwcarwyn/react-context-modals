@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 
-import { useModal } from 'contexts'
-
+import { useModal } from './index'
 import './style.scss'
-import ModalStories from '../stories/Modal.stories'
 
 const CrossIcon = props => (
   <svg
@@ -14,6 +12,7 @@ const CrossIcon = props => (
     stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
+    className="srm-close-icon"
     xmlns="http://www.w3.org/2000/svg"
   >
     <line x1="18" y1="6" x2="6" y2="18" />
@@ -21,7 +20,7 @@ const CrossIcon = props => (
   </svg>
 )
 
-const ModalBackdrop = ({ children, onClick }) => {
+const ModalBackdrop = ({ children, animated, onClick }) => {
   useEffect(() => {
     document.body.classList.add('srm-modal-open')
 
@@ -31,7 +30,10 @@ const ModalBackdrop = ({ children, onClick }) => {
   }, [])
 
   return (
-    <div onClick={onClick} className="srm-modal-backdrop">
+    <div
+      onClick={onClick}
+      className={`srm-modal-backdrop ${animated ? 'srm-fade-in' : ''}`}
+    >
       {children}
     </div>
   )
@@ -41,18 +43,24 @@ const ModalWrapper = ({ children }) => (
   <div className="srm-modal-wrapper">{children}</div>
 )
 
-const ModalContent = ({ children, className = '' }) => (
-  <div className={`srm-modal-content ${className}`}>{children}</div>
+const ModalContent = ({ children, animated, className = '' }) => (
+  <div
+    className={`srm-modal-content ${
+      animated ? 'srm-slide-down-fade' : ''
+    } ${className}`}
+  >
+    {children}
+  </div>
 )
 
-export const ModalRoot = () => {
+export const ModalRoot = ({ animated, CloseComponent = CrossIcon }) => {
   const { component: Component, modalProps, hideModal, showModal } = useModal()
 
   return Component ? (
     <ModalWrapper>
-      <ModalBackdrop onClick={hideModal} />
-      <ModalContent className={modalProps.className}>
-        <CrossIcon onClick={hideModal} className="srm-close-icon" />
+      <ModalBackdrop animated={animated} onClick={hideModal} />
+      <ModalContent animated={animated} className={modalProps.className}>
+        <CloseComponent onClick={hideModal} />
         <Component
           {...modalProps}
           hideModal={hideModal}

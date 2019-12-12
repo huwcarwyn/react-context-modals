@@ -3,6 +3,14 @@
   overflow: hidden;
 }
 
+.srm-fade-in {
+  animation: fadeIn 0.1s forwards;
+}
+
+.srm-slide-down-fade {
+  animation: slideDownFade 0.2s forwards;
+}
+
 .srm-modal-backdrop {
   top: 0;
   left: 0;
@@ -55,5 +63,27 @@
 
   &:hover {
     color: red;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDownFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

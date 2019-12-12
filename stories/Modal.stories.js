@@ -6,17 +6,42 @@ export default {
   title: 'Modal'
 }
 
+const Example = () => (
+  <div style={{ padding: '120px' }}>I'm an example component</div>
+)
+
+const ManyExamples = () => (
+  <>
+    <Example />
+    <Example />
+    <Example />
+    <Example />
+    <Example />
+    <Example />
+    <Example />
+    <Example />
+    <Example />
+    <Example />
+  </>
+)
+
 const ModalInner = () => {
   const { showModal } = useModal()
 
-  const Example = () => "I'm an example component"
-
-  return <button onClick={() => showModal(Example)}>Open a modal</button>
+  return <button onClick={() => showModal(ManyExamples)}>Open a modal</button>
 }
 
 export const defaultModal = () => {
   return (
     <ModalProvider>
+      <ModalInner />
+    </ModalProvider>
+  )
+}
+
+export const animated = () => {
+  return (
+    <ModalProvider animated>
       <ModalInner />
     </ModalProvider>
   )
