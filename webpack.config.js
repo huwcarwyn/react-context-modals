@@ -1,5 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -36,5 +38,8 @@ module.exports = {
 
   externals: ['react', 'react-dom'],
 
-  plugins: [new webpack.EnvironmentPlugin(['NODE_ENV'])]
+  plugins: [
+    new webpack.EnvironmentPlugin(['NODE_ENV']),
+    ...(process.env.ANALYZE ? [new BundleAnalyzerPlugin()] : [])
+  ]
 }
