@@ -1,6 +1,6 @@
 {
   "name": "react-context-modals",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Add modals to your React app via the context API",
   "main": "dist/main.js",
   "scripts": {
@@ -20,10 +20,13 @@
   ],
   "author": "Carwyn Stephen",
   "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.7.6"
+  },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
+    "@babel/plugin-transform-runtime": "^7.7.6",
     "@babel/preset-react": "^7.0.0",
     "@storybook/addon-actions": "^5.2.5",
     "@storybook/addon-links": "^5.2.5",
@@ -32,7 +35,6 @@
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^3.2.0",
-    "core-js": "^3.2.1",
     "cross-env": "^6.0.0",
     "css-loader": "^3.2.0",
     "jest": "^24.9.0",
