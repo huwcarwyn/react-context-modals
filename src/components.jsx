@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
-import { useModal } from './index'
 import './style.scss'
+import { useModal } from './index'
 
 const CrossIcon = props => (
   <svg

@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -26,7 +27,16 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: !isProd
+            }
+          },
+          'css-loader',
+          'sass-loader'
+        ],
         include: path.resolve(__dirname, 'src')
       }
     ]
@@ -40,6 +50,7 @@ module.exports = {
   externals: ['react', 'react-dom'],
 
   plugins: [
+    new MiniCssExtractPlugin(),
     new webpack.EnvironmentPlugin(['NODE_ENV']),
     ...(process.env.ANALYZE ? [new BundleAnalyzerPlugin()] : [])
   ]

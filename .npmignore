@@ -1,7 +1,7 @@
 /.storybook
 /src
 /stories
-.babelrc
 .prettierrc
+.gitignore
+babel.config.js
 webpack.config.js
-*.md
