@@ -16,10 +16,12 @@ yarn add react-context-modals
 
 ### Setup
 
-To set up the library - all you need to do is wrap your app in the context provider, like so:
+To set up the library - import the modal CSS (or optionally roll your own), then wrap your app in the ModalProvider like so:
 
 ```
 import { ModalProvider } from 'react-context-modals'
+
+import 'react-context-modals/dist/main.css'
 
 export const App = () => {
     return (
