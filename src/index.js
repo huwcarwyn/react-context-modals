@@ -38,7 +38,7 @@ const ModalProvider = ({ children, animated, CloseComponent }) => {
 
   const onKeyDown = e => {
     if (e.key === 'Escape') {
-      hideModal()
+      modalState.hideModal()
     }
   }
 

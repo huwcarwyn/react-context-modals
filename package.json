@@ -1,6 +1,6 @@
 {
   "name": "react-context-modals",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Add modals to your React app via the context API",
   "main": "dist/main.js",
   "scripts": {
