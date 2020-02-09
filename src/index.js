@@ -23,7 +23,7 @@ const reducer = (state, { type, component, modalProps }) => {
 }
 
 const ModalProvider = ({ children, animated, CloseComponent }) => {
-  const modalState = {
+  const initialState = {
     component: null,
     modalProps: {},
     showModal: (component, modalProps = {}) => {
@@ -34,11 +34,11 @@ const ModalProvider = ({ children, animated, CloseComponent }) => {
     }
   }
 
-  const [state, dispatch] = useReducer(reducer, modalState)
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   const onKeyDown = e => {
     if (e.key === 'Escape') {
-      modalState.hideModal()
+      state.hideModal()
     }
   }
 
