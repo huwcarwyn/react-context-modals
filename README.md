@@ -46,10 +46,12 @@ const BasicModal = ({ message }) => (
 const Example = props => {
     const { showModal, hideModal } = useModal()
 
+    const showBasicModal = () => showModal(BasicModal, {
+        message: 'This message will be passed to the modal component'
+    })
+
     return (
-        <button onClick={() => showModal(BasicModal, {
-            message: 'This message will be passed to the modal component'
-        })}>
+        <button onClick={showBasicModal}>
             Open modal
         </button>
     )
