@@ -6,10 +6,7 @@ module.exports = async ({ config }) => {
     test: /\.scss$/,
     use: [
       {
-        loader: MiniCssExtractPlugin.loader,
-        options: {
-          hmr: true
-        }
+        loader: MiniCssExtractPlugin.loader
       },
       'css-loader',
       'sass-loader'
