@@ -12,6 +12,8 @@ interface ModalContextValues {
 interface ModalProviderProps {
   animated: boolean
   children: React.ReactNode
+  CloseComponent: React.FC
+  ContentComponent: React.FC
 }
 
 const ModalContext = createContext<ModalContextValues>({
@@ -46,7 +48,7 @@ const ModalProvider = ({
   animated,
   CloseComponent,
   ContentComponent
-}) => {
+}: ModalProviderProps) => {
   const initialState = {
     component: null,
     modalProps: {},
