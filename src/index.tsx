@@ -1,8 +1,20 @@
-import React, { createContext, useReducer, useEffect, useContext } from 'react'
+import React, { useEffect, useReducer, createContext, useContext } from 'react'
 
-import { ModalRoot } from 'components'
+import { ModalRoot } from './components'
 
-const ModalContext = createContext({
+interface ModalContextValues {
+  component: React.FC
+  modalProps: any
+  showModal: () => void
+  hideModal: () => void
+}
+
+interface ModalProviderProps {
+  animated: boolean
+  children: React.ReactNode
+}
+
+const ModalContext = createContext<ModalContextValues>({
   component: () => <div>No modal component supplied</div>,
   modalProps: {},
   showModal: () => undefined,
@@ -11,7 +23,14 @@ const ModalContext = createContext({
 
 const { Provider, Consumer: ModalConsumer } = ModalContext
 
-const reducer = (state, { type, component, modalProps }) => {
+const reducer = (
+  state,
+  {
+    type,
+    component,
+    modalProps
+  }: { type: string; component?: React.FC; modalProps?: any }
+) => {
   switch (type) {
     case 'openModal':
       return { ...state, component, modalProps }
@@ -22,7 +41,12 @@ const reducer = (state, { type, component, modalProps }) => {
   }
 }
 
-const ModalProvider = ({ children, animated, CloseComponent }) => {
+const ModalProvider = ({
+  children,
+  animated,
+  CloseComponent,
+  ContentComponent
+}) => {
   const initialState = {
     component: null,
     modalProps: {},
@@ -36,7 +60,7 @@ const ModalProvider = ({ children, animated, CloseComponent }) => {
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  const onKeyDown = e => {
+  const onKeyDown = (e) => {
     if (e.key === 'Escape') {
       state.hideModal()
     }
@@ -51,7 +75,11 @@ const ModalProvider = ({ children, animated, CloseComponent }) => {
   return (
     <div onKeyDown={onKeyDown} className="simple-react-modals">
       <Provider value={state}>
-        <ModalRoot CloseComponent={CloseComponent} animated={animated} />
+        <ModalRoot
+          animated={animated}
+          CloseComponent={CloseComponent}
+          ContentComponent={ContentComponent}
+        />
         {children}
       </Provider>
     </div>

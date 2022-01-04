@@ -1,7 +1,7 @@
 /.storybook
 /src
 /stories
+/node_modules
 .prettierrc
 .gitignore
-babel.config.js
 webpack.config.js

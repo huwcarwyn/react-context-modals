@@ -9,7 +9,7 @@ const isProd = process.env.NODE_ENV === 'production'
 module.exports = {
   mode: isProd ? 'production' : 'development',
 
-  entry: path.join(__dirname, 'src/index.js'),
+  entry: path.join(__dirname, 'src/index.tsx'),
 
   output: {
     filename: '[name].js',
@@ -21,10 +21,10 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
+        test: /.tsx?$/,
+        loader: 'ts-loader'
       },
+      { test: /\.js$/, loader: 'source-map-loader' },
       {
         test: /\.scss$/,
         use: [
@@ -41,7 +41,7 @@ module.exports = {
 
   resolve: {
     modules: ['node_modules', path.join(__dirname, 'src')],
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.ts', '.tsx', '.json']
   },
 
   externals: ['react', 'react-dom'],

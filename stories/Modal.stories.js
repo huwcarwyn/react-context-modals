@@ -31,3 +31,11 @@ export const animated = () => {
     </ModalProvider>
   )
 }
+
+export const withCustomComponents = () => {
+  return (
+    <ModalProvider animated>
+      <ModalInner />
+    </ModalProvider>
+  )
+}
