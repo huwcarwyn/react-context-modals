@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
 import './style.scss'
-import { useModal } from './index'
+import { useModal, CloseComponentType, ContentComponentType } from './index'
 
 const CrossIcon = (props) => (
   <svg
@@ -51,11 +51,17 @@ const ModalContent = ({ children, animated, className = '' }) => (
   </div>
 )
 
+type ModalRootProps = {
+  animated?: boolean
+  CloseComponent?: CloseComponentType
+  ContentComponent?: ContentComponentType
+}
+
 export const ModalRoot = ({
   animated,
   CloseComponent = CrossIcon,
   ContentComponent = ModalContent
-}) => {
+}: ModalRootProps) => {
   const { component: Component, modalProps, hideModal, showModal } = useModal()
 
   return Component ? (

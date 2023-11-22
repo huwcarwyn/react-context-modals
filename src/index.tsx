@@ -5,15 +5,8 @@ import { ModalRoot } from './components'
 interface ModalContextValues {
   component: React.FC
   modalProps: any
-  showModal: () => void
+  showModal: (component: React.ComponentType<any>, modalProps?: any) => void
   hideModal: () => void
-}
-
-interface ModalProviderProps {
-  animated: boolean
-  children: React.ReactNode
-  CloseComponent: React.FC
-  ContentComponent: React.FC
 }
 
 const ModalContext = createContext<ModalContextValues>({
@@ -41,6 +34,23 @@ const reducer = (
     default:
       throw new Error('Unspecified reducer action')
   }
+}
+
+export type CloseComponentType = React.ComponentType<{
+  onClick: React.MouseEventHandler<any>
+}>
+
+export type ContentComponentType = React.ComponentType<{
+  animated?: boolean
+  className?: string
+  children: React.ReactNode
+}>
+
+export type ModalProviderProps = {
+  animated?: boolean
+  children: React.ReactNode
+  CloseComponent?: CloseComponentType
+  ContentComponent?: ContentComponentType
 }
 
 const ModalProvider = ({
