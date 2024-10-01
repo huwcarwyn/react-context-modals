@@ -5,3 +5,4 @@
 .prettierrc
 .gitignore
 webpack.config.js
+.babelrc.json

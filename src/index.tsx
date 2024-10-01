@@ -2,11 +2,17 @@ import React, { useEffect, useReducer, createContext, useContext } from 'react'
 
 import { ModalRoot } from './components'
 
-interface ModalContextValues {
-  component: React.FC
-  modalProps: any
-  showModal: (component: React.ComponentType<any>, modalProps?: any) => void
+export type ModalFunctions<ModalProps = any> = {
+  showModal: (
+    component: React.ComponentType<ModalProps>,
+    modalProps?: ModalProps
+  ) => void
   hideModal: () => void
+}
+
+type ModalContextValues<ModalProps = any> = ModalFunctions<ModalProps> & {
+  component: React.FC<ModalProps>
+  modalProps: any
 }
 
 const ModalContext = createContext<ModalContextValues>({
